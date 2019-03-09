@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "6.11.8"
+
+before_install:
+  - npm -g i firebase-tools
+  - npm -g i typescript
+  - npm -g i tslint
+
+install:
+  - cd functions
+  - npm install
+
+deploy:
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
