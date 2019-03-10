@@ -1,26 +1,16 @@
-# language: node_js
-# node_js:
-#   - "6.11.5"
-
-# before_install:
-#   - npm -g i firebase-tools
-#   - npm -g i typescript
-#   - npm -g i tslint
-
-# install:
-#   - cd functions
-#   - npm install
-#   - cd ..
-
-# deploy:
-#   provider: firebase
-#   token:
-#     secure: $FIREBASE_TOKEN
-
 language: node_js
 node_js:
-  - "node"
-deploy:
-  provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
+  - "6.11.5"
+
+before_install:
+  - npm -g i firebase-tools
+  - npm -g i typescript
+  - npm -g i tslint
+
+install:
+  - cd functions
+  - npm install
+  - cd ..
+
+after_success:
+  - firebase deploy --token $FIREBASR_TOKEN --non-interactive
