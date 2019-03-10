@@ -8,9 +8,22 @@ before_install:
   - npm -g i tslint
 
 install:
+  - echo "Time to install the application packages"
+  - cd functions
+  - npm run lint
+  - npm run build
+  - cd ..
+  - echo "Time to deploy to firebase.."
+  - firebase deploy --token $FIREBASR_TOKEN --non-interactive
+
+before_script:
+  - echo "Time to install any packages we need for testing and building the app.."
   - cd functions
   - npm install
   - cd ..
 
+script:
+  - echo "Scripting time... Run the tests "
+
 after_success:
-  - firebase deploy --token $FIREBASR_TOKEN --non-interactive
+  - echo "Deployed... to firebase."
