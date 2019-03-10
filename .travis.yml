@@ -21,7 +21,7 @@ before_script:
   - echo "Time to deploy..."
 
 script:
-  - firebase deploy --token $FIREBASR_TOKEN --non-interactive
+  - firebase deploy --token $FIREBASE_TOKEN --non-interactive
 
 after_success:
   - echo "Deployed... to firebase."
