@@ -6,6 +6,9 @@ before_install:
   - npm -g i firebase-tools
   - npm -g i typescript
   - npm -g i tslint
+  - cd functions
+  - npm install
+  - cd ..
 
 install:
   - echo "Time to install the application packages"
@@ -13,17 +16,12 @@ install:
   - npm run lint
   - npm run build
   - cd ..
-  - echo "Time to deploy to firebase.."
-  - firebase deploy --token $FIREBASR_TOKEN --non-interactive
 
 before_script:
-  - echo "Time to install any packages we need for testing and building the app.."
-  - cd functions
-  - npm install
-  - cd ..
+  - echo "Time to deploy..."
 
 script:
-  - echo "Scripting time... Run the tests "
+  - firebase deploy --token $FIREBASR_TOKEN --non-interactive
 
 after_success:
   - echo "Deployed... to firebase."
